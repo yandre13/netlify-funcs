@@ -4,10 +4,19 @@ const handler: Handler = async (
   event: HandlerEvent,
   context: HandlerContext
 ) => {
+  const message = await fetch(
+    'http://localhost:8888/.netlify/functions/hello',
+    {
+      headers: {
+        Accept: 'application/json',
+      },
+    }
+  )
+  const jsonData = await message.json()
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: 'Hello World',
+      message: jsonData.message,
     }),
   }
 }
