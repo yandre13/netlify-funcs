@@ -24,7 +24,7 @@ export default function Home({
   const [data, setData] = useState(null)
 
   const handleClick = async () => {
-    const res = await fetch('/.netlify/functions/get-subs')
+    const res = await fetch('/api/get-subs')
     const data = await res.json()
     setData(data)
   }
